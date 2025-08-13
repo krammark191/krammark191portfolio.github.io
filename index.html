@@ -8,34 +8,124 @@
 </head>
 <body>
     <header>
-        <h1>Hi, I'm Mark!</h1>
-        <p>Software Developer</p>
+        <h1>Hi, I'm Mark! Welcome to my portfolio</h1>
     </header>
     <main>
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <a href="https://github.com/krammark191/IPA-Translator" class="project-tile">
-                <div class="project-content">
-                    <img src="images/ipa-static.jpg" class="static-img" alt="IPA Translator Screenshot">
-                    <img src="images/ipa-demo.gif" class="hover-gif" alt="IPA Translator Demo">
+        <section class="about-section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate software developer with a focus on creating intuitive and efficient solutions.
+                         With expertise in multiple programming languages and frameworks, I enjoy tackling complex problems
+                          and turning them into user-friendly applications. I have more experience in backend development,
+                           specifically with C++, which the language the majority of my projects use. I also have a keen interest
+                            in mobile development, particularly with Flutter and Dart. I also have projects that I have built in the
+                             iOS development environment using Swift, and I have also built a basic Android app using Kotlin.
+                    </p>
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <ul>
+                            <li>Programming Languages: C, C++. C#, Python, Java, JavaScript</li>
+                            <li>Networking Languages: Erlang</li>
+                            <li>Frameworks: Flutter</li>
+                            <li>Web Development: HTML, CSS</li>
+                            <li>Mobile Development: Android - Kotlin, iOS - Swift, Flutter - Dart</li>
+                            <li>Database: mySQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <img src="assets/images/Profile_Picture.jpg" alt="Mark's Profile Photo">
+                    <p>Software Developer</p>
+                    <p>krammark191@gmail.com</p>
+                    <a href="https://www.linkedin.com/in/mark-van-horn-97928ba8/" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-wrapper">
+                    <a href="https://github.com/krammark191/IPA-Translator" class="project-tile">
+                        <div class="project-content">
+                            <img src="images/ipa-static.jpg" class="static-img" alt="IPA Translator Screenshot">
+                            <img src="images/ipa-demo.gif" class="hover-gif" alt="IPA Translator Demo">
+                        </div>
+                    </a>
                     <h3>IPA Translator App</h3>
                 </div>
-            </a>
-            <a href="https://github.com/krammark191/RideshareApp" class="project-tile">
-                <div class="project-content">
-                    <img src="images/rideshare-static.jpg" class="static-img" alt="Rideshare App Screenshot">
-                    <img src="images/rideshare-demo.gif" class="hover-gif" alt="Rideshare App Demo">
+
+                <div class="project-wrapper">
+                    <a href="https://github.com/krammark191/RideshareApp" class="project-tile">
+                        <div class="project-content">
+                            <img src="images/rideshare-static.jpg" class="static-img" alt="Rideshare App Screenshot">
+                            <img src="images/rideshare-demo.gif" class="hover-gif" alt="Rideshare App Demo">
+                        </div>
+                    </a>
                     <h3>Rideshare App</h3>
                 </div>
-            </a>
-            <a href="https://github.com/NicholasBoss/Holes-Are-Bad" class="project-tile">
-                <div class="project-content">
-                    <img src="images/holes-static.jpg" class="static-img" alt="Holes Are Bad Game Screenshot">
-                    <img src="images/holes-demo.gif" class="hover-gif" alt="Holes Are Bad Game Demo">
+
+                <div class="project-wrapper">
+                    <a href="https://github.com/NicholasBoss/Holes-Are-Bad" class="project-tile">
+                        <div class="project-content">
+                            <img src="images/holes-static.jpg" class="static-img" alt="Holes Are Bad Game Screenshot">
+                            <img src="images/holes-demo.gif" class="hover-gif" alt="Holes Are Bad Game Demo">
+                        </div>
+                    </a>
                     <h3>Holes Are Bad Game</h3>
                 </div>
-            </a>
-        </div>
+
+                <div class="project-wrapper">
+                    <a href="https://github.com/StrikorDawn/Encapsulation-Design-Assignments/tree/main/Lab%2012%20Artillery%20Howitzer%2C%20Projectile" class="project-tile">
+                        <div class="project-content">
+                            <img src="assets/screenshots/Artillery_sim_screenshot.png" class="static-img" alt="Artillery Simulator Screenshot">
+                            <video src="assets/demos/Artillery_Simulator.mp4" class="hover-gif" alt="Artillery Simulator Demo" muted loop playsinline preload="auto"></video>
+                        </div>
+                    </a>
+                    <h3>Artillery Simulator</h3>
+                </div>
+
+                <div class="project-wrapper">
+                    <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W06%20Chess%20Final" class="project-tile">
+                        <div class="project-content">
+                            <img src="assets/screenshots/Chess_screenshot.png" class="static-img" alt="Chess Screenshot">
+                            <video src="assets/demos/Chess.mp4" class="hover-gif" alt="Chess Demo" muted loop playsinline preload="auto"></video>
+                        </div>
+                    </a>
+                    <h3>Chess</h3>
+                </div>
+
+                <div class="project-wrapper">
+                    <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W08%20Lab%20Orbit%20One%20Satellite" class="project-tile">
+                        <div class="project-content">
+                            <img src="assets/screenshots/Orbital_sim_screenshot.png" class="static-img" alt="Orbital Sim Screenshot">
+                            <video src="assets/demos/Orbital_Simulator_Demo.mp4" class="hover-gif" alt="Orbital Sim Demo" muted loop playsinline preload="auto"></video>
+                        </div>
+                    </a>
+                    <h3>Orbital Simulator</h3>
+                </div>
+            </div>
+        </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectTiles = document.querySelectorAll('.project-tile');
+            
+            projectTiles.forEach(tile => {
+                const video = tile.querySelector('video');
+                if (video) {
+                    tile.addEventListener('mouseenter', () => {
+                        video.play();
+                    });
+                    
+                    tile.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

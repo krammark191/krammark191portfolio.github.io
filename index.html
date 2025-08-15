@@ -12,106 +12,236 @@
     </header>
     <main>
         <section class="about-section">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate software developer with a focus on creating intuitive and efficient solutions.
-                         With expertise in multiple programming languages and frameworks, I enjoy tackling complex problems
-                          and turning them into user-friendly applications. I have more experience in backend development,
-                           specifically with C++, which the language the majority of my projects use. I also have a keen interest
-                            in mobile development, particularly with Flutter and Dart. I also have projects that I have built in the
-                             iOS development environment using Swift, and I have also built a basic Android app using Kotlin.
-                    </p>
-                    <div class="skills">
-                        <h3>Skills</h3>
-                        <ul>
-                            <li>Programming Languages: C, C++. C#, Python, Java, JavaScript</li>
-                            <li>Networking Languages: Erlang</li>
-                            <li>Frameworks: Flutter</li>
-                            <li>Web Development: HTML, CSS</li>
-                            <li>Mobile Development: Android - Kotlin, iOS - Swift, Flutter - Dart</li>
-                            <li>Database: mySQL</li>
-                        </ul>
-                    </div>
+            <div class="about-text-tile">
+                <h2>About Me</h2>
+                <p>I'm a passionate software developer with a focus on creating intuitive and efficient solutions.
+                     With expertise in multiple programming languages and frameworks, I enjoy tackling complex problems
+                      and turning them into user-friendly applications. I have more experience in backend development,
+                       specifically with C++, which the language the majority of my projects use. I also have a keen interest
+                        in mobile development, particularly with Flutter and Dart. I also have projects that I have built in the
+                         iOS development environment using Swift, and I have also built a basic Android app using Kotlin.
+                </p>
+                <div class="skills">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>Programming Languages: C, C++. C#, Python, Java, JavaScript</li>
+                        <li>Networking Languages: Erlang</li>
+                        <li>Frameworks: Flutter</li>
+                        <li>Web Development: HTML, CSS</li>
+                        <li>Mobile Development: Android - Kotlin, iOS - Swift, Flutter - Dart</li>
+                        <li>Database: mySQL</li>
+                    </ul>
                 </div>
-                <div class="profile-image">
-                    <img src="assets/images/Profile_Picture.jpg" alt="Mark's Profile Photo">
-                    <p>Software Developer</p>
-                    <p>krammark191@gmail.com</p>
-                    <a href="https://www.linkedin.com/in/mark-van-horn-97928ba8/" target="_blank">LinkedIn Profile</a>
-                </div>
+            </div>
+            
+            <div class="profile-tile">
+                <img src="assets/images/Profile_Picture.jpg" alt="Mark's Profile Photo">
+                <p>Mark Van Horn</p>
+                <p>Software Developer</p>
+                <p>krammark191@gmail.com</p>
+                <a href="https://www.linkedin.com/in/mark-van-horn-97928ba8/" target="_blank">LinkedIn Profile</a>
             </div>
         </section>
 
         <section class="projects-section">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-wrapper">
-                    <a href="https://github.com/krammark191/IPA-Translator" class="project-tile">
-                        <div class="project-content">
-                            <img src="images/ipa-static.jpg" class="static-img" alt="IPA Translator Screenshot">
-                            <img src="images/ipa-demo.gif" class="hover-gif" alt="IPA Translator Demo">
+            <div class="projects-container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="assets/screenshots/Artillery_sim_screenshot.png" class="static-img" alt="Artillery Simulator Screenshot">
+                                <video src="assets/demos/Artillery_Demo.mp4" class="hover-gif" alt="Artillery Simulator Demo" muted loop playsinline preload="auto"></video>
+                            </div>
+                            <h3>Artillery Simulator</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    The Artillery Simulator is a physics-based simulation that accurately models projectile motion
+                                    taking into account factors such as gravity, air resistance, and initial velocity. The user can
+                                    adjust the angle of the howitzer by large amounts and by small amounts to fine-tune
+                                    the projectile's trajectory. This will allow to use to hit targets at various distances.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: C++, Open Graphics Library, Accurate Physics Simulation
+                                </p>
+                                <a href="https://github.com/StrikorDawn/Encapsulation-Design-Assignments/tree/main/Lab%2012%20Artillery%20Howitzer%2C%20Projectile" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>IPA Translator App</h3>
-                </div>
+                    </div>
 
-                <div class="project-wrapper">
-                    <a href="https://github.com/krammark191/RideshareApp" class="project-tile">
-                        <div class="project-content">
-                            <img src="images/rideshare-static.jpg" class="static-img" alt="Rideshare App Screenshot">
-                            <img src="images/rideshare-demo.gif" class="hover-gif" alt="Rideshare App Demo">
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="assets/screenshots/Chess_screenshot.png" class="static-img" alt="Chess Screenshot">
+                                <video src="assets/demos/Chess_Demo.mp4" class="hover-gif" alt="Chess Demo" muted loop playsinline preload="auto"></video>
+                            </div>
+                            <h3>Chess</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    A fully functional Chess game implementation featuring all standard chess rules,
+                                    including special moves like castling, en passant, and pawn promotion. The game
+                                    includes move validation and a clean user interface.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: C++, Object-Oriented Design, Open Graphics Library
+                                </p>
+                                <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W06%20Chess%20Final" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>Rideshare App</h3>
-                </div>
+                    </div>
 
-                <div class="project-wrapper">
-                    <a href="https://github.com/NicholasBoss/Holes-Are-Bad" class="project-tile">
-                        <div class="project-content">
-                            <img src="images/holes-static.jpg" class="static-img" alt="Holes Are Bad Game Screenshot">
-                            <img src="images/holes-demo.gif" class="hover-gif" alt="Holes Are Bad Game Demo">
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="assets/screenshots/Orbital_sim_screenshot.png" class="static-img" alt="Orbital Simulator Screenshot">
+                                <video src="assets/demos/Orbital_Simulator_Demo.mp4" class="hover-gif" alt="Orbital Simulator Demo" muted loop playsinline preload="auto"></video>
+                            </div>
+                            <h3>Orbital Simulator</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    An orbital mechanics simulator that demonstrates satellite motion around planetary bodies.
+                                    The simulation takes into account gravitational forces and orbital mechanics principles to
+                                    create realistic orbital paths.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: C++, Physics Simulation, Open Graphics Library
+                                </p>
+                                <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W08%20Lab%20Orbit%20One%20Satellite" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>Holes Are Bad Game</h3>
-                </div>
+                    </div>
 
-                <div class="project-wrapper">
-                    <a href="https://github.com/StrikorDawn/Encapsulation-Design-Assignments/tree/main/Lab%2012%20Artillery%20Howitzer%2C%20Projectile" class="project-tile">
-                        <div class="project-content">
-                            <img src="assets/screenshots/Artillery_sim_screenshot.png" class="static-img" alt="Artillery Simulator Screenshot">
-                            <video src="assets/demos/Artillery_Simulator.mp4" class="hover-gif" alt="Artillery Simulator Demo" muted loop playsinline preload="auto"></video>
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="assets/screenshots/IPA_Translator_Screenshot.png" class="static-img" alt="IPA Translator Screenshot">
+                                <img src="assets/demos/IPA_Translator_Demo.mp4" class="hover-gif" alt="IPA Translator Demo">
+                            </div>
+                            <h3>IPA Translator App</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    A translator application that converts text to International Phonetic Alphabet (IPA) notation.
+                                    This tool helps users understand and learn proper pronunciation of words across different
+                                    languages.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: Swift, IPA Translation API, GUI Development
+                                </p>
+                                <a href="https://github.com/krammark191/IPA-Translator" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>Artillery Simulator</h3>
-                </div>
+                    </div>
 
-                <div class="project-wrapper">
-                    <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W06%20Chess%20Final" class="project-tile">
-                        <div class="project-content">
-                            <img src="assets/screenshots/Chess_screenshot.png" class="static-img" alt="Chess Screenshot">
-                            <video src="assets/demos/Chess.mp4" class="hover-gif" alt="Chess Demo" muted loop playsinline preload="auto"></video>
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="images/rideshare-static.jpg" class="static-img" alt="Rideshare App Screenshot">
+                                <img src="images/rideshare-demo.gif" class="hover-gif" alt="Rideshare App Demo">
+                            </div>
+                            <h3>Rideshare App</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    A mobile application that facilitates ride sharing between users. Features include
+                                    user authentication, ride scheduling, route planning, and user ratings.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: Flutter, Dart, Firebase, Google Maps API
+                                </p>
+                                <a href="https://github.com/krammark191/RideshareApp" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>Chess</h3>
-                </div>
+                    </div>
 
-                <div class="project-wrapper">
-                    <a href="https://github.com/StrikorDawn/Inheritance-Design-Assignments/tree/main/W08%20Lab%20Orbit%20One%20Satellite" class="project-tile">
-                        <div class="project-content">
-                            <img src="assets/screenshots/Orbital_sim_screenshot.png" class="static-img" alt="Orbital Sim Screenshot">
-                            <video src="assets/demos/Orbital_Simulator_Demo.mp4" class="hover-gif" alt="Orbital Sim Demo" muted loop playsinline preload="auto"></video>
+                    <div class="project-wrapper">
+                        <div class="project-tile">
+                            <div class="project-content">
+                                <img src="images/holes-static.jpg" class="static-img" alt="Holes Are Bad Game Screenshot">
+                                <img src="images/holes-demo.gif" class="hover-gif" alt="Holes Are Bad Game Demo">
+                            </div>
+                            <h3>Holes Are Bad Game</h3>
+                            <div class="project-details">
+                                <p class="project-description">
+                                    An engaging arcade-style side-scroller game where players must navigate through a challenging,
+                                    procedurally generated environment while avoiding holes. Features progressive difficulty levels
+                                    and score tracking.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: RayLib-cs, C#, Weighted Randomizer, 2D Graphics
+                                </p>
+                                <a href="https://github.com/NicholasBoss/Holes-Are-Bad" 
+                                   class="project-link" target="_blank">View on GitHub</a>
+                            </div>
                         </div>
-                    </a>
-                    <h3>Orbital Simulator</h3>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-media">
+                <!-- Video/Image will be inserted here -->
+            </div>
+            <h2 class="modal-title"></h2>
+            <div class="modal-description"></div>
+            <div class="modal-tech"></div>
+            <a href="" class="modal-link" target="_blank">View on GitHub</a>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const projectTiles = document.querySelectorAll('.project-tile');
+            const modal = document.getElementById('projectModal');
+            const modalContent = modal.querySelector('.modal-content');
+            const closeButton = modal.querySelector('.close-modal');
             
+            // Handle project tile clicks
+            projectTiles.forEach(tile => {
+                tile.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent event bubbling
+                    
+                    const media = tile.querySelector('video, .hover-gif');
+                    const title = tile.querySelector('h3').textContent;
+                    const details = tile.querySelector('.project-details');
+                    
+                    // Check if we have details
+                    if (details) {
+                        const description = details.querySelector('.project-description').textContent;
+                        const tech = details.querySelector('.project-tech').textContent;
+                        const link = details.querySelector('.project-link').href;
+                        
+                        // Populate modal
+                        if (media.tagName === 'VIDEO') {
+                            const videoClone = media.cloneNode(true);
+                            videoClone.classList.remove('hover-gif');
+                            modal.querySelector('.modal-media').innerHTML = '';
+                            modal.querySelector('.modal-media').appendChild(videoClone);
+                            videoClone.play();
+                        } else {
+                            // Handle image/gif
+                            modal.querySelector('.modal-media').innerHTML = `<img src="${media.src}" alt="${media.alt}">`;
+                        }
+                        
+                        modal.querySelector('.modal-title').textContent = title;
+                        modal.querySelector('.modal-description').textContent = description;
+                        modal.querySelector('.modal-tech').textContent = tech;
+                        modal.querySelector('.modal-link').href = link;
+                        
+                        // Show modal
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    }
+                });
+            });
+            
+            // Handle hover events for project tiles
             projectTiles.forEach(tile => {
                 const video = tile.querySelector('video');
                 if (video) {
@@ -123,6 +253,31 @@
                         video.pause();
                         video.currentTime = 0;
                     });
+                }
+            });
+            
+            // Close modal when clicking close button or outside
+            closeButton.addEventListener('click', () => closeModal());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal function
+            function closeModal() {
+                const modalVideo = modal.querySelector('video');
+                if (modalVideo) {
+                    modalVideo.pause();
+                }
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+            
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
                 }
             });
         });

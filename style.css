@@ -41,11 +41,19 @@ h1, h2, h3 {
     color: var(--text-color);
 }
 
+/* Add minimum padding to main sections */
+.about-section,
+.projects-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 2rem);  /* Minimum 1rem, preferred 3vw, maximum 2rem */
+}
+
+/* Update project grid to remove its padding (since it's now handled by the section) */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -98,11 +106,12 @@ h1, h2, h3 {
     opacity: 0;
 }
 
+/* Update project tile padding */
 .project-tile h3 {
     margin: 0;
-    padding: 1rem 1.5rem;
-    color: var(--text-color); /* Change from white to text color */
-    text-align: left; /* Change from center to left */
+    padding: 1.25rem 1.5rem;  /* Changed from 1rem to 1.25rem for more flexible spacing */
+    color: var(--text-color);
+    text-align: left;
 }
 
 /* General section styling */
@@ -172,6 +181,15 @@ h1, h2, h3 {
 .projects-container {
     background-color: var(--tile-color);
     border-radius: 15px;
+    padding: clamp(1rem, 2vw, 2rem);  /* Slightly smaller padding for the container */
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Update projects container padding */
+.projects-container {
+    background-color: var(--tile-color);
+    border-radius: 15px;
     padding: 2rem;
     margin-top: 2rem;
     box-shadow: 0 2px 8px var(--shadow-color);
@@ -210,12 +228,13 @@ h1, h2, h3 {
     overflow-y: auto;
 }
 
+/* Update modal content padding */
 .modal-content {
     position: relative;
     background-color: var(--tile-color);
     width: 90%;
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 3.125rem auto;  /* Changed from 50px to 3.125rem */
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -236,6 +255,7 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
+/* Update close modal button padding */
 .close-modal {
     position: absolute;
     top: 1rem;
@@ -248,8 +268,8 @@ h1, h2, h3 {
     padding: 0.5rem;
     line-height: 1;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;  /* Changed from 40px to 2.5rem */
+    height: 2.5rem;  /* Changed from 40px to 2.5rem */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,15 +338,15 @@ h1, h2, h3 {
 /* Update the ribbon styles */
 .ribbon {
     position: absolute;
-    top: 20px;
-    right: -35px;  /* Adjusted slightly */
+    top: 1.25rem;  /* Changed from 20px to 1.25rem */
+    right: -2.188rem;  /* Changed from -35px to -2.188rem */
     background: var(--accent-color);
     color: white;
-    padding: 10px 30px;
+    padding: 0.625rem 1.875rem;  /* Changed from 10px 30px to 0.625rem 1.875rem */
     transform: rotate(45deg);
     z-index: 1;
     font-size: 0.9rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2);  /* Changed from 0 2px 4px */
 }
 
 /* Project links container */
@@ -337,6 +357,17 @@ h1, h2, h3 {
     margin-top: 1.5rem;
 }
 
+.project-link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+/* Update project links padding */
 .project-link {
     display: inline-block;
     padding: 0.8rem 1.5rem;
@@ -384,19 +415,12 @@ h1, h2, h3 {
 @media (max-width: 768px) {
     .project-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;  /* Slightly reduce gap on smaller screens */
     }
 
-    .about-content {
-        flex-direction: column-reverse;
-        gap: 2rem;
-    }
-
-    .profile-image {
-        text-align: center;
-    }
-
-    .profile-image img {
-        max-width: 250px;
+    .about-section,
+    .projects-section {
+        padding: 0 1rem;  /* Force minimum padding on small screens */
     }
 }
 

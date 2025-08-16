@@ -138,6 +138,7 @@
 
                     <div class="project-wrapper">
                         <div class="project-tile">
+                            <div class="ribbon">SDD Included!</div>
                             <div class="project-content">
                                 <img src="images/rideshare-static.jpg" class="static-img" alt="Rideshare App Screenshot">
                                 <img src="images/rideshare-demo.gif" class="hover-gif" alt="Rideshare App Demo">
@@ -151,8 +152,12 @@
                                 <p class="project-tech">
                                     Technologies used: Flutter, Dart, Firebase, Google Maps API
                                 </p>
-                                <a href="https://github.com/krammark191/RideshareApp" 
-                                   class="project-link" target="_blank">View on GitHub</a>
+                                <div class="project-links">
+                                    <a href="https://github.com/Mtha-Sibanda/rideshare" 
+                                       class="project-link" target="_blank">View on GitHub</a>
+                                    <a href="assets/documents/Rideshare SDD v1.0 - Milestone 6.pdf" 
+                                       class="project-link pdf-link" target="_blank">View SDD</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -191,7 +196,10 @@
             <h2 class="modal-title"></h2>
             <div class="modal-description"></div>
             <div class="modal-tech"></div>
-            <a href="" class="modal-link" target="_blank">View on GitHub</a>
+            <div class="modal-links">
+                <a href="" class="modal-link" target="_blank">View on GitHub</a>
+                <!-- PDF button will be inserted here if available -->
+            </div>
         </div>
     </div>
     <script>
@@ -204,18 +212,25 @@
             // Handle project tile clicks
             projectTiles.forEach(tile => {
                 tile.addEventListener('click', (e) => {
+                    // Don't trigger modal if clicking a link or button
+                    if (e.target.closest('a')) {
+                        return;
+                    }
+                    
                     e.preventDefault();
-                    e.stopPropagation(); // Prevent event bubbling
+                    e.stopPropagation();
                     
                     const media = tile.querySelector('video, .hover-gif');
                     const title = tile.querySelector('h3').textContent;
                     const details = tile.querySelector('.project-details');
                     
-                    // Check if we have details
                     if (details) {
                         const description = details.querySelector('.project-description').textContent;
                         const tech = details.querySelector('.project-tech').textContent;
-                        const link = details.querySelector('.project-link').href;
+                        
+                        // Get all links for this project
+                        const projectLinks = details.querySelector('.project-links');
+                        const modalLinks = modal.querySelector('.modal-links');
                         
                         // Populate modal
                         if (media.tagName === 'VIDEO') {
@@ -225,20 +240,36 @@
                             modal.querySelector('.modal-media').appendChild(videoClone);
                             videoClone.play();
                         } else {
-                            // Handle image/gif
                             modal.querySelector('.modal-media').innerHTML = `<img src="${media.src}" alt="${media.alt}">`;
                         }
                         
                         modal.querySelector('.modal-title').textContent = title;
                         modal.querySelector('.modal-description').textContent = description;
                         modal.querySelector('.modal-tech').textContent = tech;
-                        modal.querySelector('.modal-link').href = link;
+                        
+                        // Clone all links if they exist
+                        if (projectLinks) {
+                            modalLinks.innerHTML = projectLinks.innerHTML;
+                        } else {
+                            // Fallback to just the GitHub link
+                            const githubLink = details.querySelector('.project-link');
+                            modalLinks.innerHTML = githubLink.outerHTML;
+                        }
                         
                         // Show modal
                         modal.style.display = 'block';
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        document.body.style.overflow = 'hidden';
                     }
                 });
+            });
+            
+            // Handle PDF button clicks
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('pdf-button')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    togglePDF();
+                }
             });
             
             // Handle hover events for project tiles
@@ -281,6 +312,58 @@
                 }
             });
         });
+        
+        // Add this to your existing script
+        function togglePDF() {
+            const pdfViewer = document.getElementById('pdfViewer');
+            const currentDisplay = window.getComputedStyle(pdfViewer).display;
+            
+            if (currentDisplay === 'none') {
+                pdfViewer.style.display = 'block';
+                // Add overlay behind PDF viewer
+                const overlay = document.createElement('div');
+                overlay.className = 'modal-overlay pdf-overlay';
+                overlay.onclick = function(e) {
+                    if (e.target === overlay) {
+                        togglePDF();
+                    }
+                };
+                document.body.appendChild(overlay);
+                
+                // Ensure the iframe is loaded
+                const iframe = pdfViewer.querySelector('iframe');
+                if (iframe) {
+                    iframe.src = iframe.src;
+                }
+            } else {
+                pdfViewer.style.display = 'none';
+                // Remove overlay
+                const overlay = document.querySelector('.pdf-overlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+            }
+        }
+        
+        // Close PDF viewer with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const pdfViewer = document.getElementById('pdfViewer');
+                if (window.getComputedStyle(pdfViewer).display === 'block') {
+                    togglePDF();
+                }
+            }
+        });
+        
+        // Add click handler for close PDF button
+        const closePdfButton = document.querySelector('.close-pdf');
+        if (closePdfButton) {
+            closePdfButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                togglePDF();
+            });
+        }
     </script>
 </body>
 </html>

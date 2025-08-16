@@ -74,6 +74,7 @@ h1, h2, h3 {
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
+    border-radius: 12px 12px 0 0; /* Add rounded corners only to the top */
 }
 
 .project-content img,
@@ -97,16 +98,11 @@ h1, h2, h3 {
     opacity: 0;
 }
 
-.project-content h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.project-tile h3 {
     margin: 0;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    text-align: center;
+    padding: 1rem 1.5rem;
+    color: var(--text-color); /* Change from white to text color */
+    text-align: left; /* Change from center to left */
 }
 
 /* General section styling */
@@ -317,6 +313,65 @@ h1, h2, h3 {
 
 .modal-content {
     animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Update the ribbon styles */
+.ribbon {
+    position: absolute;
+    top: 20px;
+    right: -35px;  /* Adjusted slightly */
+    background: var(--accent-color);
+    color: white;
+    padding: 10px 30px;
+    transform: rotate(45deg);
+    z-index: 1;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Project links container */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.project-link:hover {
+    background-color: var(--hover-color);
+    color: white !important;
+}
+
+/* Keep the PDF link styling as it's still used for the direct link */
+.pdf-link {
+    background-color: #e74c3c !important;
+}
+
+.pdf-link:hover {
+    background-color: #c0392b !important;
+}
+
+/* Modal links container */
+.modal-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Make sure project tile has position relative for ribbon positioning */
+.project-tile {
+    position: relative;
+    overflow: hidden;
 }
 
 /* Make it responsive */

@@ -312,58 +312,6 @@
                 }
             });
         });
-        
-        // Add this to your existing script
-        function togglePDF() {
-            const pdfViewer = document.getElementById('pdfViewer');
-            const currentDisplay = window.getComputedStyle(pdfViewer).display;
-            
-            if (currentDisplay === 'none') {
-                pdfViewer.style.display = 'block';
-                // Add overlay behind PDF viewer
-                const overlay = document.createElement('div');
-                overlay.className = 'modal-overlay pdf-overlay';
-                overlay.onclick = function(e) {
-                    if (e.target === overlay) {
-                        togglePDF();
-                    }
-                };
-                document.body.appendChild(overlay);
-                
-                // Ensure the iframe is loaded
-                const iframe = pdfViewer.querySelector('iframe');
-                if (iframe) {
-                    iframe.src = iframe.src;
-                }
-            } else {
-                pdfViewer.style.display = 'none';
-                // Remove overlay
-                const overlay = document.querySelector('.pdf-overlay');
-                if (overlay) {
-                    overlay.remove();
-                }
-            }
-        }
-        
-        // Close PDF viewer with escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const pdfViewer = document.getElementById('pdfViewer');
-                if (window.getComputedStyle(pdfViewer).display === 'block') {
-                    togglePDF();
-                }
-            }
-        });
-        
-        // Add click handler for close PDF button
-        const closePdfButton = document.querySelector('.close-pdf');
-        if (closePdfButton) {
-            closePdfButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                togglePDF();
-            });
-        }
     </script>
 </body>
 </html>

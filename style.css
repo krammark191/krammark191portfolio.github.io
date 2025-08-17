@@ -91,19 +91,68 @@ h1, h2, h3 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .hover-gif {
     opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.project-tile:hover .hover-gif {
-    opacity: 1;
+.gif-fallback {
+    opacity: 0;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    pointer-events: none; /* Ensures GIF doesn't interfere with hover detection */
+    will-change: opacity; /* Optimizes for animations */
+}
+
+.video-main {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .project-tile:hover .static-img {
     opacity: 0;
+}
+
+.project-tile:hover .gif-fallback {
+    opacity: 1;
+}
+
+.project-tile:hover .video-main.loaded {
+    opacity: 1;
+}
+
+/* Add z-index to control layering */
+.static-img {
+    z-index: 1;
+}
+
+.gif-fallback {
+    z-index: 2;
+}
+
+.video-main {
+    z-index: 3;
+}
+
+/* Ensure proper stacking in hover state */
+.project-tile:hover .static-img {
+    opacity: 0;
+    z-index: 1;
+}
+
+.project-tile:hover .gif-fallback {
+    opacity: 1;
+    z-index: 2;
+}
+
+.project-tile:hover .video-main.loaded {
+    opacity: 1;
+    z-index: 3;
 }
 
 /* Update project tile padding */

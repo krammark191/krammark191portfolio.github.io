@@ -387,15 +387,15 @@ h1, h2, h3 {
 /* Update the ribbon styles */
 .ribbon {
     position: absolute;
-    top: 1.25rem;  /* Changed from 20px to 1.25rem */
-    right: -2.188rem;  /* Changed from -35px to -2.188rem */
+    top: 1.25rem;
+    right: -2.188rem;
     background: var(--accent-color);
     color: white;
-    padding: 0.625rem 1.875rem;  /* Changed from 10px 30px to 0.625rem 1.875rem */
+    padding: 0.625rem 1.875rem;
     transform: rotate(45deg);
-    z-index: 1;
+    z-index: 10; /* Increase this value to ensure it's above other elements */
     font-size: 0.9rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2);  /* Changed from 0 2px 4px */
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.2);
 }
 
 /* Project links container */

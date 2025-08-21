@@ -446,7 +446,7 @@ h1, h2, h3 {
 .social-link:hover {
     width: 8rem;
     border-radius: 2rem;
-    background-color: var(--accent-color);
+    background-color: #000000;
 }
 
 .social-link:hover span {
@@ -556,6 +556,92 @@ h1, h2, h3 {
 .project-tile {
     position: relative;
     overflow: hidden;
+}
+/* LinkedIn link specific styling */
+
+.linkedin-link {
+    background-image: url('assets/icons/expanded-icons/linkedin_banner.jpeg');
+    background-size: auto 118%; /* Default to full height */
+    background-position: right center; /* Center the image */
+    background-repeat: no-repeat;
+    background-color: #000000; /* Use LinkedIn's brand color */
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%; /* Make it a circular icon */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden; /* This is key to hide the banner until hovered */
+    
+    /* Center the text and make it invisible by default */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkedin-link:hover {
+    width: 8.5rem; /* Adjust width to the aspect ratio of your banner */
+    border-radius: 2rem;
+    background-size: auto 90%; /* Stretch the background to the full banner size */
+    background-position: center; /* Center the banner */
+}
+
+.linkedin-link span {
+    color: white; /* Ensure text is visible over the banner */
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: add shadow for better readability */
+}
+
+.linkedin-link:hover span {
+    opacity: 1;
+}
+
+/* GitHub link specific styling */
+.github-link {
+    background-image: url('assets/icons/expanded-icons/github_banner.jpeg');
+    background-size: auto 98%; /* Default to full height */
+    background-position: left center; /* Center the image */
+    background-repeat: no-repeat;
+    background-color: #000; /* Use a black background to match the logo */
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%; /* Make it a circular icon */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden; /* This is key to hide the banner until hovered */
+    
+    /* Center the text and make it invisible by default */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover states */
+.github-link:hover {
+    width: 9.5rem; /* Adjust width to the aspect ratio of your banner */
+    border-radius: 2rem;
+    background-size: auto 100%; /* Stretch the background to the full banner size */
+    background-position: center; /* Center the banner */
+}
+
+/* Text styling for the GitHub link on hover */
+.github-link span {
+    color: white; /* Ensure text is visible over the banner */
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: add shadow for better readability */
+}
+
+.github-link:hover span {
+    opacity: 1;
+}
+
+/* Since you are no longer using separate images, these are now obsolete */
+.github-banner,
+.github-icon {
+    display: none;
 }
 
 /* Make it responsive */

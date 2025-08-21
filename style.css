@@ -75,6 +75,7 @@ h1, h2, h3 {
     transform: scale(1.15);
     z-index: 1;
     box-shadow: 0 8px 16px var(--shadow-color);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Add bouncy effect */
 }
 
 .project-content {
@@ -242,6 +243,7 @@ h1, h2, h3 {
     padding: 2rem;
     margin-top: 2rem;
     box-shadow: 0 2px 8px var(--shadow-color);
+    animation: fadeIn 1s ease-out 0.6s backwards;
 }
 
 .projects-container h2 {
@@ -399,6 +401,93 @@ h1, h2, h3 {
     animation: modalFadeIn 0.3s ease-out;
 }
 
+/* Add animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Social links styling */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link span {
+    font-size: 0.8rem;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    width: 8rem;
+    border-radius: 2rem;
+    background-color: var(--accent-color);
+}
+
+.social-link:hover span {
+    opacity: 1;
+}
+
+/* Add animations to sections */
+.about-section {
+    animation: fadeIn 1s ease-out;
+}
+
+.about-text-tile {
+    animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+.profile-tile {
+    animation: fadeIn 1s ease-out 0.4s backwards;
+}
+
+/* Add hover effect to profile image */
+.profile-tile img {
+    transition: transform 0.3s ease;
+}
+
+.profile-tile img:hover {
+    transform: scale(1.05);
+}
+
+/* Add subtle animation to skills */
+.skills ul li {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.skills ul li:nth-child(1) { animation-delay: 0.6s; }
+.skills ul li:nth-child(2) { animation-delay: 0.7s; }
+.skills ul li:nth-child(3) { animation-delay: 0.8s; }
+.skills ul li:nth-child(4) { animation-delay: 0.9s; }
+.skills ul li:nth-child(5) { animation-delay: 1.0s; }
+.skills ul li:nth-child(6) { animation-delay: 1.1s; }
+
 /* Update the ribbon styles */
 .ribbon {
     position: absolute;
@@ -504,4 +593,46 @@ h1, h2, h3 {
     font-style: italic;
     color: #666;
     line-height: 1.4;
+}
+
+/* Add animation to projects container */
+.projects-container {
+    background-color: #d7d7d7;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+/* Add staggered animations to project tiles */
+.project-wrapper {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Stagger the animations for each project tile */
+.project-wrapper:nth-child(1) { animation-delay: 0.8s; }
+.project-wrapper:nth-child(2) { animation-delay: 0.9s; }
+.project-wrapper:nth-child(3) { animation-delay: 1.0s; }
+.project-wrapper:nth-child(4) { animation-delay: 1.1s; }
+.project-wrapper:nth-child(5) { animation-delay: 1.2s; }
+.project-wrapper:nth-child(6) { animation-delay: 1.3s; }
+.project-wrapper:nth-child(7) { animation-delay: 1.4s; }
+
+/* Add a subtle scale animation to project tiles on load */
+.project-tile {
+    /* ... existing styles ... */
+    animation: projectTileIn 0.5s ease-out backwards;
+}
+
+@keyframes projectTileIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

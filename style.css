@@ -342,6 +342,21 @@ h1, h2, h3 {
     color: var(--text-color);
 }
 
+/* Add styles for modal descriptions */
+.modal-description .primary-description {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.modal-description .secondary-description {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 .modal-tech {
     font-size: 1rem;
     color: #666;
@@ -482,4 +497,11 @@ h1, h2, h3 {
         max-width: 500px;
         margin: 0 auto;
     }
+}
+
+.project-role {
+    margin: 1rem 0;
+    font-style: italic;
+    color: #666;
+    line-height: 1.4;
 }

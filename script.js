@@ -76,7 +76,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const details = tile.querySelector('.project-details');
 
             if (details) {
-                const description = details.querySelector('.project-description').textContent;
+                const descriptions = details.querySelectorAll('.project-description');
+                const modalDescriptionDiv = modal.querySelector('.modal-description');
+                
+                // Clear previous content
+                modalDescriptionDiv.innerHTML = '';
+                
+                // Add each description as a separate paragraph
+                descriptions.forEach((desc, index) => {
+                    const p = document.createElement('p');
+                    p.textContent = desc.textContent;
+                    p.className = index === 0 ? 'primary-description' : 'secondary-description';
+                    modalDescriptionDiv.appendChild(p);
+                });
+
                 const tech = details.querySelector('.project-tech').textContent;
                 const projectLinks = details.querySelector('.project-links');
                 const modalLinks = modal.querySelector('.modal-links');
@@ -100,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 modal.querySelector('.modal-title').textContent = title;
-                modal.querySelector('.modal-description').textContent = description;
                 modal.querySelector('.modal-tech').textContent = tech;
 
                 if (projectLinks) {

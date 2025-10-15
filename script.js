@@ -161,4 +161,85 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     });
+
+    // Language showcase animation
+    function initLanguageShowcase() {
+        const gifs = document.querySelectorAll('.language-gif');
+        const proficiencyBar = document.getElementById('proficiencyBar');
+        const languageName = document.getElementById('languageName');
+        let currentIndex = 0;
+
+        function updateShowcase() {
+            // Remove active class from all gifs
+            gifs.forEach(gif => gif.classList.remove('active'));
+            
+            // Add active class to current gif
+            const currentGif = gifs[currentIndex];
+            currentGif.classList.add('active');
+            
+            // Update proficiency bar
+            const proficiency = currentGif.dataset.proficiency;
+            proficiencyBar.style.width = `${proficiency}%`;
+            
+            // Update language name
+            languageName.textContent = currentGif.alt;
+            
+            // Increment index
+            currentIndex = (currentIndex + 1) % gifs.length;
+        }
+
+        // Initial update
+        updateShowcase();
+        
+        // Set interval for cycling
+        setInterval(updateShowcase, 3000);
+    }
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', initLanguageShowcase);
+
+    // Language icons functionality
+    document.addEventListener('DOMContentLoaded', () => {
+        const languageIcons = document.querySelectorAll('.language-icon');
+        const proficiencyBar = document.getElementById('proficiencyBar');
+        const languageName = document.getElementById('languageName');
+        let currentIndex = 0;
+        let intervalId;
+
+        function showLanguage(index) {
+            // Hide all icons
+            languageIcons.forEach(icon => icon.classList.remove('active'));
+            
+            // Show the selected icon
+            languageIcons[index].classList.add('active');
+            
+            // Update proficiency bar
+            const proficiency = languageIcons[index].dataset.proficiency;
+            proficiencyBar.style.width = `${proficiency}%`;
+            
+            // Update language name
+            languageName.textContent = languageIcons[index].alt;
+        }
+
+        function nextLanguage() {
+            currentIndex = (currentIndex + 1) % languageIcons.length;
+            showLanguage(currentIndex);
+        }
+
+        // Start automatic rotation
+        intervalId = setInterval(nextLanguage, 3000);
+
+        // Allow manual navigation by clicking
+        languageIcons.forEach((icon, index) => {
+            icon.addEventListener('click', () => {
+                clearInterval(intervalId);
+                currentIndex = index;
+                showLanguage(currentIndex);
+                intervalId = setInterval(nextLanguage, 3000);
+            });
+        });
+
+        // Show initial language
+        showLanguage(0);
+    });
 });

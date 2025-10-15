@@ -638,9 +638,89 @@ h1, h2, h3 {
     opacity: 1;
 }
 
-/* Since you are no longer using separate images, these are now obsolete */
-.github-banner,
-.github-icon {
+/* Resume link specific styling */
+.resume-link {
+    background-image: url('assets/icons/expanded-icons/resume_banner.jpeg');
+    background-size: auto 98%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-color: #000;
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-link:hover {
+    width: 10.3rem;
+    border-radius: 2rem;
+    background-size: auto 100%;
+    background-position: center;
+}
+
+.resume-link span {
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.resume-link:hover span {
+    opacity: 1;
+}
+
+/* Transcript link specific styling */
+.transcript-link {
+    background-image: url('assets/icons/expanded-icons/transcript_banner.png');
+    background-size: auto 98%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-color: #000;
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transcript-link:hover {
+    width: 11rem;
+    border-radius: 2rem;
+    background-size: auto 90%;
+    background-position: center;
+}
+
+.transcript-link span {
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.transcript-link:hover span {
+    opacity: 1;
+}
+
+/* Remove the old social-link styles that might conflict */
+.social-link {
+    display: none;
+}
+
+.link-banner,
+.link-icon {
     display: none;
 }
 

@@ -60,9 +60,27 @@ h1, h2, h3 {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+/* Give the flagship project a taller tile (its demo is a portrait phone screen) so it reads as the standout piece */
+.featured-project {
+    grid-row: span 2;
+}
+
+.featured-project .project-tile {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-project .project-content {
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 .project-tile {
@@ -171,15 +189,6 @@ h1, h2, h3 {
     text-align: left;
 }
 
-/* General section styling */
-.section-tile {
-    background-color: #f5f5f5;
-    border-radius: 15px;
-    padding: 2rem;
-    margin: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* About section specific styling */
 .about-section {
     display: grid;
@@ -206,10 +215,13 @@ h1, h2, h3 {
 
 .profile-tile img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     max-width: 300px;
     border-radius: 50%;
     margin-bottom: 1.5rem;
     border: 3px solid var(--accent-color);
+    object-fit: cover;
 }
 
 .profile-tile p {
@@ -245,15 +257,6 @@ h1, h2, h3 {
     animation: fadeIn 1s ease-out 0.5s backwards;
 }
 
-.projects-container {
-    background-color: var(--tile-color);
-    border-radius: 15px;
-    padding: clamp(1rem, 2vw, 2rem);  /* Slightly smaller padding for the container */
-    margin-top: 2rem;
-    box-shadow: 0 2px 8px var(--shadow-color);
-}
-
-/* Update projects container padding */
 .projects-container {
     background-color: #d7d7d7;
     border-radius: 15px;
@@ -599,36 +602,6 @@ h1, h2, h3 {
     animation: pulse 2s ease-out infinite;
 }
 
-.track-connector {
-    position: absolute;
-    top: calc(var(--lane-height) - 6px);
-    height: calc(var(--lane-gap) + 12px);
-    width: 2px;
-    background: #5b6b80;
-    border-radius: 999px;
-    z-index: 3;
-}
-
-.track-connector::before,
-.track-connector::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #5b6b80;
-    transform: translateX(-50%);
-}
-
-.track-connector::before {
-    top: -5px;
-}
-
-.track-connector::after {
-    bottom: -5px;
-}
-
 .school-track .track-content {
     background: transparent;
     box-shadow: none;
@@ -968,17 +941,6 @@ h1, h2, h3 {
     transition: background-color 0.2s;
 }
 
-/* Update project links padding */
-.project-link {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: var(--accent-color);
-    color: white !important;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-}
-
 .project-link:hover {
     background-color: var(--hover-color);
     color: white !important;
@@ -1000,11 +962,6 @@ h1, h2, h3 {
     margin-top: 1.5rem;
 }
 
-/* Make sure project tile has position relative for ribbon positioning */
-.project-tile {
-    position: relative;
-    overflow: hidden;
-}
 /* LinkedIn link specific styling */
 
 .linkedin-link {
@@ -1182,52 +1139,19 @@ h1, h2, h3 {
 
 /* Language showcase styling */
 .language-showcase {
-    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 1rem 0;
 }
 
-.proficiency-meter {
-    width: 100%;
-    height: 8px;
-    background: #e0e0e0;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-}
-
-.meter-fill {
-    height: 100%;
-    background: var(--accent-color);
-    width: 95%;
-    transition: width 0.5s ease;
-}
-
 .language-icon {
-    position: absolute;
     border-radius: 10px;
-    margin-top: 15px;
     width: 100%;
     height: auto;
     max-height: 200px;
     object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.language-icon.active {
-    opacity: 1;
-}
-
-.language-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-top: 130px; /* Adjust this value based on your icon size */
-    text-align: center;
 }
 
 /* Responsive adjustments */
@@ -1250,6 +1174,21 @@ h1, h2, h3 {
     .project-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;  /* Slightly reduce gap on smaller screens */
+    }
+
+    .featured-project {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .featured-project .project-tile {
+        height: auto;
+        display: block;
+    }
+
+    .featured-project .project-content {
+        aspect-ratio: 16 / 9;
+        flex: none;
     }
 
     .about-section,
@@ -1320,15 +1259,25 @@ h1, h2, h3 {
         background: transparent;
         box-shadow: none;
         padding: 0.4rem 0 0.4rem 1.25rem;
+        min-width: 0;
+    }
+
+    .lane {
+        min-width: 0;
     }
 
     .bar {
         position: relative;
-        left: auto;
-        width: 100%;
+        left: auto !important;
+        width: 100% !important;
         top: auto;
         height: auto;
         margin: 0.9rem 0;
+        min-width: 0;
+    }
+
+    .bar-title {
+        white-space: normal !important;
     }
 
     .bar::before {
@@ -1347,11 +1296,11 @@ h1, h2, h3 {
 
     .bar-content {
         position: relative;
-        top: 0;
+        top: 0 !important;
         left: 0;
-        max-width: 100%;
-        max-height: none;
-        width: 100%;
+        max-width: 100% !important;
+        max-height: none !important;
+        width: fit-content !important;
     }
 
     .bar-content .bar-subtitle,
@@ -1367,19 +1316,20 @@ h1, h2, h3 {
     }
 
     .school-track {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
         width: 100%;
-        opacity: 0.35;
+        opacity: 1;
         margin-top: 0;
-        z-index: 0;
+        z-index: auto;
+        pointer-events: auto;
     }
 
     .school-track .track-title {
-        display: none;
+        display: block;
     }
 
     .school-lane {
@@ -1388,9 +1338,17 @@ h1, h2, h3 {
 
     .school-band {
         position: relative;
-        left: auto;
-        width: 100%;
+        left: auto !important;
+        width: 100% !important;
         margin: 0.75rem 0;
+    }
+
+    .work-track {
+        margin-top: 0;
+    }
+
+    .lane {
+        height: auto;
     }
 }
 
@@ -1403,23 +1361,6 @@ h1, h2, h3 {
         max-width: 500px;
         margin: 0 auto;
     }
-}
-
-.project-role {
-    margin: 1rem 0;
-    font-style: italic;
-    color: #666;
-    line-height: 1.4;
-}
-
-/* Add animation to projects container */
-.projects-container {
-    background-color: #d7d7d7;
-    border-radius: 15px;
-    padding: 2rem;
-    margin-top: 2rem;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    animation: fadeIn 1s ease-out 0.6s backwards;
 }
 
 /* Add staggered animations to project tiles */
@@ -1435,11 +1376,9 @@ h1, h2, h3 {
 .project-wrapper:nth-child(4) { animation-delay: 1.1s; }
 .project-wrapper:nth-child(5) { animation-delay: 1.2s; }
 .project-wrapper:nth-child(6) { animation-delay: 1.3s; }
-.project-wrapper:nth-child(7) { animation-delay: 1.4s; }
 
 /* Add a subtle scale animation to project tiles on load */
 .project-tile {
-    /* ... existing styles ... */
     animation: projectTileIn 0.5s ease-out backwards;
 }
 

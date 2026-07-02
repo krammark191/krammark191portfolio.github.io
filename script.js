@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     const projectTiles = document.querySelectorAll('.project-tile');
 
+    // Only fetch each preview video once it's about to scroll into view,
+    // instead of downloading all of them on page load.
+    const videoLoadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.load();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px' });
+
     // Handle video loading and fallback
     projectTiles.forEach(tile => {
         const video = tile.querySelector('video');
@@ -8,22 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const staticImg = tile.querySelector('.static-img');
 
         if (video) {
-            // Initially hide video and set up loading
+            // Initially hide video and defer loading until near-visible
             video.style.opacity = '0';
-            video.load(); // Explicitly load the video
+            videoLoadObserver.observe(video);
 
             // When video can play
             video.addEventListener('canplay', () => {
                 video.classList.add('loaded');
-                console.log('Video loaded:', video.src); // Debug log
             });
 
             // Handle hover events
             tile.addEventListener('mouseenter', () => {
                 staticImg.style.opacity = '0';
-
-                // Debug log
-                console.log('Video readyState:', video.readyState);
 
                 if (video.classList.contains('loaded')) {
                     // Video is ready, show video and hide GIF
@@ -128,15 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Handle PDF button clicks
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('pdf-button')) {
-            e.preventDefault();
-            e.stopPropagation();
-            togglePDF();
-        }
-    });
-
     // Close modal when clicking close button or outside
     closeButton.addEventListener('click', () => closeModal());
     modal.addEventListener('click', (e) => {
@@ -162,84 +160,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Language showcase animation
-    function initLanguageShowcase() {
-        const gifs = document.querySelectorAll('.language-gif');
-        const proficiencyBar = document.getElementById('proficiencyBar');
-        const languageName = document.getElementById('languageName');
-        let currentIndex = 0;
-
-        function updateShowcase() {
-            // Remove active class from all gifs
-            gifs.forEach(gif => gif.classList.remove('active'));
-            
-            // Add active class to current gif
-            const currentGif = gifs[currentIndex];
-            currentGif.classList.add('active');
-            
-            // Update proficiency bar
-            const proficiency = currentGif.dataset.proficiency;
-            proficiencyBar.style.width = `${proficiency}%`;
-            
-            // Update language name
-            languageName.textContent = currentGif.alt;
-            
-            // Increment index
-            currentIndex = (currentIndex + 1) % gifs.length;
-        }
-
-        // Initial update
-        updateShowcase();
-        
-        // Set interval for cycling
-        setInterval(updateShowcase, 3000);
-    }
-
-    // Call the function when the page loads
-    document.addEventListener('DOMContentLoaded', initLanguageShowcase);
-
-    // Language icons functionality
-    document.addEventListener('DOMContentLoaded', () => {
-        const languageIcons = document.querySelectorAll('.language-icon');
-        const proficiencyBar = document.getElementById('proficiencyBar');
-        const languageName = document.getElementById('languageName');
-        let currentIndex = 0;
-        let intervalId;
-
-        function showLanguage(index) {
-            // Hide all icons
-            languageIcons.forEach(icon => icon.classList.remove('active'));
-            
-            // Show the selected icon
-            languageIcons[index].classList.add('active');
-            
-            // Update proficiency bar
-            const proficiency = languageIcons[index].dataset.proficiency;
-            proficiencyBar.style.width = `${proficiency}%`;
-            
-            // Update language name
-            languageName.textContent = languageIcons[index].alt;
-        }
-
-        function nextLanguage() {
-            currentIndex = (currentIndex + 1) % languageIcons.length;
-            showLanguage(currentIndex);
-        }
-
-        // Start automatic rotation
-        intervalId = setInterval(nextLanguage, 3000);
-
-        // Allow manual navigation by clicking
-        languageIcons.forEach((icon, index) => {
-            icon.addEventListener('click', () => {
-                clearInterval(intervalId);
-                currentIndex = index;
-                showLanguage(currentIndex);
-                intervalId = setInterval(nextLanguage, 3000);
-            });
-        });
-
-        // Show initial language
-        showLanguage(0);
-    });
 });

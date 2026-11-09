@@ -672,8 +672,9 @@ header.hero h1 {
 .bar-content {
     position: absolute;
     left: 0;
-    top: -3.25rem;
-    max-width: 13rem;
+    bottom: 1.1rem;
+    width: max-content;
+    max-width: 16rem;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -685,9 +686,6 @@ header.hero h1 {
     font-size: 0.78rem;
     line-height: 1.2;
     z-index: 5;
-    max-height: 1.8rem;
-    overflow: hidden;
-    transition: max-height 0.2s ease, max-width 0.2s ease;
 }
 
 .bar-content::after {
@@ -703,6 +701,7 @@ header.hero h1 {
 }
 
 .bar-alt .bar-content {
+    bottom: auto;
     top: 1.4rem;
 }
 
@@ -748,7 +747,6 @@ header.hero h1 {
 .bar-title {
     font-weight: 700;
     font-size: 0.82rem;
-    white-space: nowrap;
 }
 
 .bar-subtitle {
@@ -768,14 +766,8 @@ header.hero h1 {
     transition: opacity 0.2s ease, max-height 0.2s ease;
 }
 
-.bar:hover .bar-content {
-    max-height: 7rem;
-    max-width: 22rem;
-}
-
 .bar-compact .bar-content {
     max-width: none;
-    width: max-content;
 }
 
 .bar-compact .bar-subtitle,
@@ -794,32 +786,6 @@ header.hero h1 {
     max-height: 3rem;
 }
 
-.bar-tight .bar-content {
-    top: -3.6rem;
-}
-
-.bar-wrap .bar-title {
-    white-space: normal;
-}
-
-.bar-wide .bar-content {
-    width: 16rem;
-    max-width: 16rem;
-}
-
-.bar-wide:hover .bar-content {
-    width: auto;
-}
-
-.bar-tall:hover .bar-content {
-    max-height: 9.5rem;
-    z-index: 20;
-}
-
-.bar-tall .bar-content {
-    max-height: 2.5rem;
-}
-
 .bar-tall {
     z-index: 6;
 }
@@ -828,8 +794,8 @@ header.hero h1 {
     z-index: 20;
 }
 
-.bar-church-current .bar-content {
-    top: -4.2rem;
+.bar-tall:hover .bar-content {
+    z-index: 20;
 }
 
 .bar-safeway {
@@ -1494,9 +1460,9 @@ header.hero h1 {
     .bar-content {
         position: relative;
         top: 0 !important;
+        bottom: auto !important;
         left: 0;
         max-width: 100% !important;
-        max-height: none !important;
         width: fit-content !important;
     }
 

@@ -5,33 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Van Horn | Software Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and mobile development, featuring the Rideshare App and other projects.">
+    <meta name="description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and game/mod development, featuring the Rideshare App and other projects.">
     <link rel="canonical" href="https://krammark191.github.io/krammark191portfolio.github.io/">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mark Van Horn | Software Developer Portfolio">
-    <meta property="og:description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and mobile development, featuring the Rideshare App and other projects.">
+    <meta property="og:description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and game/mod development, featuring the Rideshare App and other projects.">
     <meta property="og:url" content="https://krammark191.github.io/krammark191portfolio.github.io/">
     <meta property="og:image" content="https://krammark191.github.io/krammark191portfolio.github.io/assets/images/Profile_Picture.jpg">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Mark Van Horn | Software Developer Portfolio">
-    <meta name="twitter:description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and mobile development, featuring the Rideshare App and other projects.">
+    <meta name="twitter:description" content="Portfolio of Mark Van Horn, a software developer and project manager specializing in C++, Flutter, and game/mod development, featuring the Rideshare App and other projects.">
     <meta name="twitter:image" content="https://krammark191.github.io/krammark191portfolio.github.io/assets/images/Profile_Picture.jpg">
 
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon/apple-touch-icon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+    <nav class="site-nav">
+        <a href="#top" class="nav-brand">Mark Van Horn</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <header class="hero" id="top">
         <h1>Hi, I'm Mark! Welcome to my portfolio</h1>
+        <p class="hero-subtitle">
+            Software developer and project manager focused on C++, Flutter, and the occasional
+            weekend game mod. I like building things end-to-end, from a software design document
+            down to the pixels on screen.
+        </p>
+        <div class="hero-actions">
+            <a href="#projects" class="hero-btn hero-btn-primary">View Projects</a>
+            <a href="assets/documents/Resume - January 2026.pdf" target="_blank" rel="noopener" class="hero-btn hero-btn-secondary">Download Resume</a>
+        </div>
     </header>
+
     <main>
-        <section class="about-section">
+        <section class="about-section" id="about">
             <div class="about-text-tile">
                 <h2>About Me</h2>
                 <p>I'm a passionate software developer with a focus on creating intuitive and efficient solutions.
@@ -57,7 +92,7 @@
                         <ul>
                             <li>Programming Languages: C, C++, C#, Python, Java, JavaScript, ARM Assembly</li>
                             <li>Networking Languages: Erlang, GraphQL</li>
-                            <li>Frameworks: Flutter</li>
+                            <li>Frameworks: Flutter, Unreal Engine</li>
                             <li>Web Development: HTML, CSS</li>
                             <li>Mobile Development: Android - Kotlin, iOS - Swift, Flutter - Dart</li>
                             <li>Database: mySQL</li>
@@ -92,7 +127,7 @@
             </div>
         </section>
 
-        <section class="experience-section">
+        <section class="experience-section" id="experience">
             <div class="experience-container">
                 <h2>Experience Timeline</h2>
                 <div class="timeline">
@@ -209,7 +244,7 @@
             </div>
         </section>
 
-        <section class="projects-section">
+        <section class="projects-section" id="projects">
             <div class="projects-container">
                 <h2>Projects</h2>
                 <div class="project-grid">
@@ -217,7 +252,7 @@
                     <!-- Rideshare App -->
                     <div class="project-wrapper featured-project">
                         <div class="project-tile">
-                            <div class="ribbon">SDD Included!</div>
+                            <div class="project-badge">Flagship Project</div>
                             <div class="project-content">
                                 <img src="assets/screenshots/Rideshare_Screenshot.webp" class="static-img"
                                     alt="Rideshare App Screenshot">
@@ -227,7 +262,25 @@
                                     playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>Rideshare App</h3>
+                            <div class="project-face">
+                                <span class="project-category">Mobile App · Team Project</span>
+                                <h3>Rideshare App</h3>
+                                <p class="project-teaser">
+                                    A mobile application that facilitates ride sharing between users. Features include
+                                    user authentication, ride scheduling, route planning, and user ratings. Began as a
+                                    software design document for a class of 18 students; now in active development
+                                    with Gary Sibanda and I leading the build.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>Flutter</li>
+                                    <li>Dart</li>
+                                    <li>Firebase</li>
+                                    <li>Google Maps API</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     A mobile application that facilitates ride sharing between users. Features include
@@ -320,6 +373,199 @@
                         </div>
                     </div>
 
+                    <!-- C++ Simulators (combo release) -->
+                    <div class="project-wrapper">
+                        <div class="project-tile static-only">
+                            <div class="project-badge">Multi-Platform Release</div>
+                            <div class="project-content">
+                                <img src="assets/screenshots/CppSimulators_Icon.png" class="static-img contain-img"
+                                    alt="C++ Simulators app icon showing the four merged simulators">
+                            </div>
+                            <div class="project-face">
+                                <span class="project-category">C++ · Desktop Release</span>
+                                <h3>C++ Simulators</h3>
+                                <p class="project-teaser">
+                                    A packaged desktop app that merges four of my course simulators, Apollo 11 Lander,
+                                    Artillery Howitzer, Chess, and the Orbital Simulator, into one shell with a shared
+                                    menu, packaging scripts, and automated Windows/macOS releases.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>OpenGL / GLUT</li>
+                                    <li>CMake</li>
+                                    <li>GitHub Actions</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
+                            <div class="project-details">
+                                <p class="project-description primary-description">
+                                    A native C++ sampler application that combines four legacy course simulators,
+                                    Apollo 11 Lander, Artillery Howitzer, Chess, and the Orbital Simulator, into a
+                                    single desktop release.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    Each of these started as a separate pair-programming assignment with Taden Marston
+                                    (see them individually below). This project goes a step further: a shared
+                                    application shell, a common menu flow, per-simulator adapters, preview assets,
+                                    packaging scripts, release automation, and test coverage, all wrapped around the
+                                    original OpenGL/GLUT-style engines so none of the original simulation code had to
+                                    be rewritten.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    The build is driven by CMake and an Xcode project for local development, with a
+                                    GitHub Actions workflow that builds the Windows package automatically. Releases are
+                                    published straight to GitHub: a macOS .dmg, and a Windows .zip bundling the
+                                    executable with its required assets and runtime DLLs.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: C++, OpenGL / GLUT, CMake, Xcode, GitHub Actions (CI), shell
+                                    packaging scripts
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/krammark191/cpp-sims" class="project-link"
+                                        target="_blank">View on GitHub</a>
+                                    <a href="https://github.com/krammark191/cpp-sims/releases/latest"
+                                        class="project-link" target="_blank">Latest Release</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Runeforge: Valheim Character Editor -->
+                    <div class="project-wrapper">
+                        <div class="project-tile static-only">
+                            <div class="project-badge">Live Demo</div>
+                            <div class="project-content">
+                                <img src="assets/screenshots/Runeforge_Screenshot.jpg" class="static-img"
+                                    alt="Runeforge Valheim character editor showing an inventory grid">
+                            </div>
+                            <div class="project-face">
+                                <span class="project-category">Browser Tool · Valheim</span>
+                                <h3>Runeforge: Valheim Character Editor</h3>
+                                <p class="project-teaser">
+                                    A browser-only editor for Valheim 1.0 character saves. Its headline feature raises
+                                    an item's quality past its crafting station's cap, into Forge of Potential range,
+                                    without ever touching the game's cheat flags.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>JavaScript</li>
+                                    <li>Binary File Parsing</li>
+                                    <li>No Build Step</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
+                            <div class="project-details">
+                                <p class="project-description primary-description">
+                                    A browser-only editor for Valheim 1.0 character files (.fch). Everything runs
+                                    client-side, no build step, no framework, no upload: open the page and drop in a
+                                    save file, or try the built-in demo character.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    The inventory view is an 8xN grid read straight from the save, with drag to
+                                    move/swap/merge stacks, a search across 1,000+ items, and editable stack size,
+                                    durability, variant, and equipped state. Quality is stored as a plain u16 in the
+                                    save, so the editor allows values straight up to 65535, highlighting anything above
+                                    the crafting station's normal cap as "Forge of Potential range."
+                                </p>
+                                <p class="project-description secondary-description">
+                                    The interesting engineering problem was staying out of Valheim's cheat-detection
+                                    system entirely. Saving is done by splicing: only the inventory and skills byte
+                                    ranges are re-encoded, and the rest of the file, including the usedCheats flag, is
+                                    copied byte for byte from the original. New items are written with the cheated bit
+                                    clear and stamped with the player's own character as crafter, and the SHA-512 over
+                                    the payload is recomputed so nothing else that reads the file can tell the
+                                    difference. The editor reads its own output back and refuses to save if anything
+                                    differs from what was edited.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    Skills can be set 0-100 individually or all at once, and an Integrity tab gives a
+                                    read-only summary of the character plus a dedicated view of the cheat state, with a
+                                    one-click flag clear for characters that already carry it. Undo/redo and keyboard
+                                    shortcuts (Ctrl+Z, Ctrl+S) round out the editing experience, and on Chromium
+                                    browsers it can open the Valheim characters folder directly and save in place,
+                                    writing a timestamped .bak first.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: Vanilla JavaScript, custom binary reader/writer, client-side
+                                    file parsing, no build tooling
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://krammark191.github.io/runeforge/" class="project-link"
+                                        target="_blank">Live Demo</a>
+                                    <a href="https://github.com/krammark191/runeforge" class="project-link"
+                                        target="_blank">View on GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segmented Splines: Satisfactory mod -->
+                    <div class="project-wrapper">
+                        <div class="project-tile static-only">
+                            <div class="project-badge">Client-Side Only</div>
+                            <div class="project-content">
+                                <img src="assets/graphics/SegmentedSplines_Tile.svg" class="static-img"
+                                    alt="Diagram of a conveyor belt cut to the longest legal length at a dashed limit line">
+                            </div>
+                            <div class="project-face">
+                                <span class="project-category">Unreal Engine · Satisfactory Mod</span>
+                                <h3>Segmented Splines</h3>
+                                <p class="project-teaser">
+                                    A Satisfactory mod that drags a belt, pipe, hypertube, or rail hologram past its
+                                    length limit and, instead of a red "too long" error, builds the longest legal piece
+                                    cut from the curve you were aiming at.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>Unreal Engine</li>
+                                    <li>Satisfactory Mod Loader</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
+                            <div class="project-details">
+                                <p class="project-description primary-description">
+                                    A client-side-only Satisfactory mod. Drag a belt, pipe, hypertube, or rail hologram
+                                    past its length limit and, instead of a red "too long" hologram, you get the
+                                    longest legal piece cut from the curve you were aiming at. Build it, then start the
+                                    next piece from its end.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    The interesting constraint here was making it work on vanilla servers with zero
+                                    server-side changes. Only the server actually constructs anything; the client just
+                                    serialises its local hologram into a construction message that the server
+                                    re-validates. By only ever changing the local hologram, what the client sends is
+                                    already a legal segment, so a server with no mods installed accepts it without
+                                    complaint. The mod is also marked RequiredOnRemote: false, so a modded client can
+                                    still join unmodded servers.
+                                </p>
+                                <p class="project-description secondary-description">
+                                    Under the hood, AFGConveyorBeltHologram, AFGRailroadTrackHologram, and
+                                    AFGPipelineHologram all override CheckValidPlacement, which the build gun runs
+                                    every frame after the spline has been routed. A pre-hook installed with SML's
+                                    SUBSCRIBE_UOBJECT_METHOD measures the routed spline; if it's over the class's
+                                    limit, it calls the game's own FSplineUtils::SplitSplineAtDistance just inside that
+                                    limit, keeps the first half as the hologram's spline data, and shifts the end pole
+                                    to match. Vanilla's own validation then runs on the trimmed spline and passes. A
+                                    planned phase 2 chains pieces together automatically across a full long run.
+                                </p>
+                                <p class="project-tech">
+                                    Technologies used: C++, Unreal Engine (Satisfactory's Coffee Stain fork), Satisfactory
+                                    Mod Loader (SML), Alpakit packaging
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/krammark191/SegmentedSplines" class="project-link"
+                                        target="_blank">View on GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Lunar Lander -->
                     <div class="project-wrapper">
                         <div class="project-tile">
@@ -332,7 +578,23 @@
                                     playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>Lunar Lander</h3>
+                            <div class="project-face">
+                                <span class="project-category">C++ · Physics Simulation</span>
+                                <h3>Lunar Lander</h3>
+                                <p class="project-teaser">
+                                    A realistic simulation of a lunar lander, where the player must control the descent
+                                    of a spacecraft to land safely on the moon's surface, with real gravity and thrust
+                                    physics driving the experience.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>OpenGL</li>
+                                    <li>Encapsulation</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     This is a realistic simulation of a lunar lander, where the player must control the
@@ -355,7 +617,7 @@
                                     based on the physics calculations. The project was a great learning experience in
                                     applying object-oriented
                                     design principles and encapsulation in C++.
-                                </p>"
+                                </p>
                                 <p class="project-tech">
                                     Technologies used: C++, Realistic Physics Simulations, Open Graphics Library
                                 </p>
@@ -377,7 +639,23 @@
                                     playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>Artillery Simulator</h3>
+                            <div class="project-face">
+                                <span class="project-category">C++ · Physics Simulation</span>
+                                <h3>Artillery Simulator</h3>
+                                <p class="project-teaser">
+                                    A physics-based simulation that accurately models projectile motion, accounting for
+                                    gravity, air resistance, and initial velocity, with fine control over the
+                                    howitzer's angle to hit targets at various distances.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>OpenGL</li>
+                                    <li>Physics Simulation</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     The Artillery Simulator is a physics-based simulation that accurately models
@@ -404,6 +682,7 @@
                                     classes. This reuse of code not only saved development time but also ensured
                                     consistency in the physics
                                     calculations across both projects.
+                                </p>
                                 <p class="project-tech">
                                     Technologies used: C++, Open Graphics Library, Accurate Physics Simulation
                                 </p>
@@ -425,7 +704,23 @@
                                     playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>Chess</h3>
+                            <div class="project-face">
+                                <span class="project-category">C++ · Object-Oriented Design</span>
+                                <h3>Chess</h3>
+                                <p class="project-teaser">
+                                    A fully functional Chess game implementation featuring all standard chess rules,
+                                    including special moves like castling, en passant, and pawn promotion, with move
+                                    validation and a clean interface.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>OpenGL</li>
+                                    <li>Inheritance</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     A fully functional Chess game implementation featuring all standard chess rules,
@@ -450,6 +745,7 @@
                                     pair programming with Taden Marston, where we applied our knowledge of encapsulation
                                     and design principles
                                     to create a project with higher inheritance principles.
+                                </p>
                                 <p class="project-tech">
                                     Technologies used: C++, Object-Oriented Design, Open Graphics Library
                                 </p>
@@ -471,7 +767,23 @@
                                     loop playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>Orbital Simulator</h3>
+                            <div class="project-face">
+                                <span class="project-category">C++ · Inheritance Design</span>
+                                <h3>Orbital Simulator</h3>
+                                <p class="project-teaser">
+                                    An orbital mechanics simulator that demonstrates satellite motion around planetary
+                                    bodies, taking gravitational forces and orbital mechanics principles into account
+                                    to create realistic orbital paths.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>C++</li>
+                                    <li>OpenGL</li>
+                                    <li>Inheritance</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     An orbital mechanics simulator that demonstrates satellite motion around planetary
@@ -523,7 +835,23 @@
                                     loop playsinline preload="none" type="video/mp4">
                                 </video>
                             </div>
-                            <h3>IPA Translator App</h3>
+                            <div class="project-face">
+                                <span class="project-category">iOS App · Swift</span>
+                                <h3>IPA Translator App</h3>
+                                <p class="project-teaser">
+                                    A translator application that converts text to International Phonetic Alphabet
+                                    (IPA) notation, helping users understand and learn proper pronunciation across
+                                    several languages.
+                                </p>
+                                <ul class="tech-chips">
+                                    <li>Swift</li>
+                                    <li>REST API</li>
+                                    <li>iOS</li>
+                                </ul>
+                                <div class="project-face-footer">
+                                    <span class="view-more">View full case study →</span>
+                                </div>
+                            </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
                                     A translator application that converts text to International Phonetic Alphabet (IPA)
@@ -564,6 +892,13 @@
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Mark Van Horn. Built with HTML, CSS, and JavaScript.
+            <a href="https://github.com/krammark191/krammark191portfolio.github.io" target="_blank" rel="noopener">View source</a>
+        </p>
+    </footer>
+
     <div class="modal-overlay" id="projectModal">
         <div class="modal-content">
             <button class="close-modal">&times;</button>

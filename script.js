@@ -1,4 +1,41 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Theme toggle (dark/light), persisted in localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function updateThemeIcon() {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    if (themeToggle) {
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon();
+        });
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
     const projectTiles = document.querySelectorAll('.project-tile');
 
     // Only fetch each preview video once it's about to scroll into view,
@@ -101,14 +138,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 const projectLinks = details.querySelector('.project-links');
                 const modalLinks = modal.querySelector('.modal-links');
 
-                // Check for video first, then gif fallback
+                // Check for video first, then gif fallback, then the static image
                 const video = tile.querySelector('video.video-main');
                 const gif = tile.querySelector('.gif-fallback');
+                const staticImg = tile.querySelector('.static-img');
 
                 // Clear previous modal media
                 modal.querySelector('.modal-media').innerHTML = '';
 
-                // Use video if it's loaded, otherwise use gif
+                // Use video if it's loaded, otherwise fall back to the gif, then the static image
                 if (video && video.readyState >= 3) {
                     const videoClone = video.cloneNode(true);
                     videoClone.classList.remove('hover-gif', 'video-main');
@@ -117,6 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     videoClone.play();
                 } else if (gif) {
                     modal.querySelector('.modal-media').innerHTML = `<img src="${gif.src}" alt="${gif.alt}">`;
+                } else if (staticImg) {
+                    const imgClass = staticImg.classList.contains('contain-img') ? ' class="contain-img"' : '';
+                    modal.querySelector('.modal-media').innerHTML = `<img src="${staticImg.src}" alt="${staticImg.alt}"${imgClass}>`;
                 }
 
                 modal.querySelector('.modal-title').textContent = title;

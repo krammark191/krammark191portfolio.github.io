@@ -1,0 +1,71 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Segmented Splines: a conveyor belt is cut to the longest legal length at a dashed limit line">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#121b30"/>
+    </linearGradient>
+    <linearGradient id="belt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a3550"/>
+      <stop offset="100%" stop-color="#3a4668"/>
+    </linearGradient>
+    <linearGradient id="cutpiece" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3463e4"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+    <pattern id="hatch" width="18" height="18" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" fill="transparent"/>
+      <line x1="0" y1="0" x2="0" y2="18" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- factory skyline silhouette -->
+  <g opacity="0.35" fill="#1c2742">
+    <rect x="40" y="300" width="26" height="70"/>
+    <rect x="76" y="270" width="18" height="100"/>
+    <rect x="104" y="290" width="34" height="80"/>
+    <circle cx="121" cy="268" r="14"/>
+    <rect x="650" y="280" width="30" height="90"/>
+    <rect x="690" y="250" width="18" height="120"/>
+    <rect x="718" y="295" width="40" height="75"/>
+  </g>
+
+  <!-- ground line -->
+  <line x1="0" y1="370" x2="800" y2="370" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- belt track -->
+  <g filter="url(#soft)">
+    <rect x="70" y="205" width="660" height="46" rx="23" fill="url(#belt)"/>
+    <rect x="70" y="205" width="660" height="46" rx="23" fill="url(#hatch)"/>
+  </g>
+
+  <!-- rejected overrun ghost (faded, dashed outline) continuing past the limit -->
+  <rect x="560" y="205" width="170" height="46" rx="23" fill="none" stroke="rgba(239,83,80,0.55)" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="645" y="196" text-anchor="middle" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="13" fill="rgba(239,83,80,0.85)" font-weight="600">refused length</text>
+
+  <!-- the legal, built piece -->
+  <rect x="70" y="205" width="490" height="46" rx="23" fill="url(#cutpiece)" filter="url(#soft)"/>
+  <rect x="70" y="205" width="490" height="46" rx="23" fill="url(#hatch)" opacity="0.5"/>
+
+  <!-- limit line / cut point -->
+  <line x1="560" y1="180" x2="560" y2="276" stroke="#e8edf5" stroke-width="2" stroke-dasharray="4 6"/>
+  <circle cx="560" cy="228" r="7" fill="#e8edf5"/>
+  <text x="560" y="300" text-anchor="middle" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#9fb0c9" font-weight="600">class length limit</text>
+
+  <!-- end poles -->
+  <rect x="62" y="195" width="10" height="66" rx="3" fill="#aeb9d4"/>
+  <rect x="553" y="195" width="10" height="66" rx="3" fill="#e8edf5"/>
+
+  <!-- build-gun crosshair accent, top-right -->
+  <g opacity="0.5" stroke="#6c5ce7" stroke-width="2" fill="none">
+    <circle cx="700" cy="110" r="26"/>
+    <line x1="700" y1="74" x2="700" y2="94"/>
+    <line x1="700" y1="126" x2="700" y2="146"/>
+    <line x1="664" y1="110" x2="684" y2="110"/>
+    <line x1="716" y1="110" x2="736" y2="110"/>
+  </g>
+</svg>

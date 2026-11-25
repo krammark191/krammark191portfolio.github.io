@@ -67,30 +67,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Handle hover events
             tile.addEventListener('mouseenter', () => {
-                staticImg.style.opacity = '0';
-
                 if (video.classList.contains('loaded')) {
-                    // Video is ready, show video and hide GIF
+                    staticImg.style.opacity = '0';
                     video.style.opacity = '1';
-                    gifFallback.style.opacity = '0';
+                    if (gifFallback) gifFallback.style.opacity = '0';
                     video.play()
                         .catch(e => {
                             console.log('Video play failed:', e);
-                            // Fallback to GIF if video fails to play
                             video.style.opacity = '0';
-                            gifFallback.style.opacity = '1';
+                            if (gifFallback) {
+                                gifFallback.style.opacity = '1';
+                            } else {
+                                staticImg.style.opacity = '1';
+                            }
                         });
-                } else {
-                    // Video not ready, show GIF
+                } else if (gifFallback) {
+                    staticImg.style.opacity = '0';
                     gifFallback.style.opacity = '1';
                     video.style.opacity = '0';
                 }
             });
 
             tile.addEventListener('mouseleave', () => {
-                // Reset to static image
                 staticImg.style.opacity = '1';
-                gifFallback.style.opacity = '0';
+                if (gifFallback) gifFallback.style.opacity = '0';
                 video.style.opacity = '0';
                 if (!video.paused) {
                     video.pause();

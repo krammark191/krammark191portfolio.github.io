@@ -501,19 +501,23 @@
 
                     <!-- Segmented Splines: Satisfactory mod -->
                     <div class="project-wrapper">
-                        <div class="project-tile static-only">
-                            <div class="project-badge">Client-Side Only</div>
+                        <div class="project-tile">
+                            <div class="project-badge">Published on ficsit.app</div>
                             <div class="project-content">
-                                <img src="assets/graphics/SegmentedSplines_Tile.svg" class="static-img"
-                                    alt="Diagram of a conveyor belt cut to the longest legal length at a dashed limit line">
+                                <img src="assets/screenshots/SegmentedSplines_Screenshot.jpg" class="static-img"
+                                    alt="A long conveyor belt being built as three pieces across a canyon, with preview poles at the joints">
+                                <video src="assets/demos/SegmentedSplines_Demo.mp4" class="hover-gif video-main" muted
+                                    loop playsinline preload="none" type="video/mp4">
+                                </video>
                             </div>
                             <div class="project-face">
                                 <span class="project-category">Unreal Engine · Satisfactory Mod</span>
                                 <h3>Segmented Splines</h3>
                                 <p class="project-teaser">
-                                    A Satisfactory mod that drags a belt, pipe, hypertube, or rail hologram past its
-                                    length limit and, instead of a red "too long" error, builds the longest legal piece
-                                    cut from the curve you were aiming at.
+                                    A published Satisfactory mod. Drag a belt, pipe, hypertube, or railway as far as
+                                    you like, past the per-piece length limit, and build it with one click: the mod
+                                    cuts it into equal legal pieces, builds them in sequence, and seats a support at
+                                    every joint. Works when joining unmodded servers.
                                 </p>
                                 <ul class="tech-chips">
                                     <li>C++</li>
@@ -526,35 +530,40 @@
                             </div>
                             <div class="project-details">
                                 <p class="project-description primary-description">
-                                    A client-side-only Satisfactory mod. Drag a belt, pipe, hypertube, or rail hologram
-                                    past its length limit and, instead of a red "too long" hologram, you get the
-                                    longest legal piece cut from the curve you were aiming at. Build it, then start the
-                                    next piece from its end.
+                                    A client-side Satisfactory mod, published on ficsit.app. Drag a conveyor belt,
+                                    pipe, hypertube, or railway as far as you like, past the per-piece length limit,
+                                    and build it with one click. The mod cuts the curve you aimed for into the fewest
+                                    equal legal pieces that fit under the limit (up to 32), builds them one after
+                                    another, seats a support pole at every joint where there is floor beneath it, and
+                                    shows a readout of the full length and section count while you drag.
                                 </p>
                                 <p class="project-description secondary-description">
-                                    The interesting constraint here was making it work on vanilla servers with zero
-                                    server-side changes. Only the server actually constructs anything; the client just
-                                    serialises its local hologram into a construction message that the server
-                                    re-validates. By only ever changing the local hologram, what the client sends is
-                                    already a legal segment, so a server with no mods installed accepts it without
-                                    complaint. The mod is also marked RequiredOnRemote: false, so a modded client can
-                                    still join unmodded servers.
+                                    The defining constraint was making it work when joining a vanilla dedicated server
+                                    with no mods and no SML installed. Only the server constructs buildings: the client
+                                    serialises its local hologram into a construction message and the server
+                                    re-validates it (length, slope, curvature, clearance, cost) before building. This
+                                    mod only ever changes the local hologram so that every message the client sends is
+                                    a legal single piece. For a long spline it sends piece one, waits for the built
+                                    piece to replicate back, snaps the next hologram to its end connector, sends that,
+                                    and so on. It is marked RequiredOnRemote: false, so a modded client can still join
+                                    unmodded servers.
                                 </p>
                                 <p class="project-description secondary-description">
-                                    Under the hood, AFGConveyorBeltHologram, AFGRailroadTrackHologram, and
-                                    AFGPipelineHologram all override CheckValidPlacement, which the build gun runs
-                                    every frame after the spline has been routed. A pre-hook installed with SML's
-                                    SUBSCRIBE_UOBJECT_METHOD measures the routed spline; if it's over the class's
-                                    limit, it calls the game's own FSplineUtils::SplitSplineAtDistance just inside that
-                                    limit, keeps the first half as the hologram's spline data, and shifts the end pole
-                                    to match. Vanilla's own validation then runs on the trimmed spline and passes. A
-                                    planned phase 2 chains pieces together automatically across a full long run.
+                                    The hooks are SML native hooks on CheckValidPlacement, TrySnapToActor,
+                                    SetHologramLocationAndRotation, and DoMultiStepPlacement of the belt, pipeline, and
+                                    railroad track hologram classes, plus the construction message serializer, with
+                                    protected engine members reached through Access Transformers. Under the limit,
+                                    building is exactly vanilla; blueprints, train platforms, and the game's own bridge
+                                    splines are left alone. It builds against the Coffee Stain custom Unreal Engine and
+                                    is packaged with Alpakit for the Satisfactory Mod Manager.
                                 </p>
                                 <p class="project-tech">
                                     Technologies used: C++, Unreal Engine (Satisfactory's Coffee Stain fork), Satisfactory
                                     Mod Loader (SML), Alpakit packaging
                                 </p>
                                 <div class="project-links">
+                                    <a href="https://ficsit.app/mod/SegmentedSplines" class="project-link"
+                                        target="_blank">Get it on ficsit.app</a>
                                     <a href="https://github.com/krammark191/SegmentedSplines" class="project-link"
                                         target="_blank">View on GitHub</a>
                                 </div>
